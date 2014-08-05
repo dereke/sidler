@@ -40,11 +40,11 @@
             id: "sidler-dialog-" + dialogCount,
             show: function() {
                 var self = this;
-                return self.el.setAttribute("class", "dialog " + position + " show");
+                return self.el.setAttribute("class", "sidler-dialog " + position + " show");
             },
             hide: function() {
                 var self = this;
-                return self.el.setAttribute("class", "dialog " + position + " hide");
+                return self.el.setAttribute("class", "sidler-dialog " + position + " hide");
             },
             toggle: function() {
                 var self = this;
@@ -60,7 +60,7 @@
         dialogs = container.get();
         if (options.selector) {
             dialog.el = document.querySelector(options.selector);
-            dialog.el.classList.add("dialog");
+            dialog.el.classList.add("sidler-dialog");
             if (dialog.el.id) {
                 dialog.id = dialog.el.id;
             }
@@ -69,7 +69,7 @@
             dialog.el.id = dialog.id;
             dialogs.appendChild(dialog.el);
         }
-        dialog.el.setAttribute("class", "dialog " + position);
+        dialog.el.setAttribute("class", "sidler-dialog " + position);
         if (options.html) {
             dialog.el.innerHTML = options.html;
         }
@@ -103,7 +103,7 @@
     };
 }).call(this);
 },{"./container":1,"./style":3}],3:[function(_dereq_,module,exports){
-(function() { var head = document.getElementsByTagName('head')[0]; style = document.createElement('style'); style.type = 'text/css';var css = ".dialog{position:fixed}.dialog.top.show{-webkit-animation:slideDown .5s 0s 1 ease forwards}.dialog.right.show{-webkit-animation:slideLeft .5s 0s 1 ease forwards}.dialog.bottom.show{-webkit-animation:slideUp .5s 0s 1 ease forwards}.dialog.left.show{-webkit-animation:slideRight .5s 0s 1 ease forwards}.dialog.top.hide{-webkit-animation:slideHideUp .5s 0s 1 ease forwards}.dialog.right.hide{-webkit-animation:slideHideRight .5s 0s 1 ease forwards}.dialog.bottom.hide{-webkit-animation:slideHideDown .5s 0s 1 ease forwards}.dialog.left.hide{-webkit-animation:slideHideLeft .5s 0s 1 ease forwards}.dialog.top{top:0;-webkit-transform:translateY(-100%)}.dialog.right{right:0;-webkit-transform:translateX(100%)}.dialog.bottom{bottom:0;-webkit-transform:translateY(100%)}.dialog.left{left:0;-webkit-transform:translateX(-100%)}@-webkit-keyframes slideLeft{0%{-webkit-transform:translateX(100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideDown{0%{-webkit-transform:translateY(-100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideRight{0%{-webkit-transform:translateX(-100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideUp{0%{-webkit-transform:translateY(100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideHideLeft{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(-100%)}}@-webkit-keyframes slideHideDown{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(100%)}}@-webkit-keyframes slideHideRight{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(100%)}}@-webkit-keyframes slideHideUp{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(-100%)}}";if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style);}())
+(function() { var head = document.getElementsByTagName('head')[0]; style = document.createElement('style'); style.type = 'text/css';var css = ".sidler-dialog{position:fixed}.sidler-dialog.top.show{-webkit-animation:slideDown .5s 0s 1 ease forwards}.sidler-dialog.right.show{-webkit-animation:slideLeft .5s 0s 1 ease forwards}.sidler-dialog.bottom.show{-webkit-animation:slideUp .5s 0s 1 ease forwards}.sidler-dialog.left.show{-webkit-animation:slideRight .5s 0s 1 ease forwards}.sidler-dialog.top.hide{-webkit-animation:slideHideUp .5s 0s 1 ease forwards}.sidler-dialog.right.hide{-webkit-animation:slideHideRight .5s 0s 1 ease forwards}.sidler-dialog.bottom.hide{-webkit-animation:slideHideDown .5s 0s 1 ease forwards}.sidler-dialog.left.hide{-webkit-animation:slideHideLeft .5s 0s 1 ease forwards}.sidler-dialog.top{top:0;-webkit-transform:translateY(-100%)}.sidler-dialog.right{right:0;-webkit-transform:translateX(100%)}.sidler-dialog.bottom{bottom:0;-webkit-transform:translateY(100%)}.sidler-dialog.left{left:0;-webkit-transform:translateX(-100%)}@-webkit-keyframes slideLeft{0%{-webkit-transform:translateX(100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideDown{0%{-webkit-transform:translateY(-100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideRight{0%{-webkit-transform:translateX(-100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideUp{0%{-webkit-transform:translateY(100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideHideLeft{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(-100%)}}@-webkit-keyframes slideHideDown{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(100%)}}@-webkit-keyframes slideHideRight{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(100%)}}@-webkit-keyframes slideHideUp{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(-100%)}}";if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style);}())
 },{}]},{},[2])
 (2)
 });
