@@ -7,7 +7,25 @@ describe 'dialog'
       dialog = builder.init()
       retry!
         rect = document.getElementById(dialog.id).getBoundingClientRect()
-        expect(rect.top).to.be.lessThan(0)
+        expect(rect.top).to.equal(0)
+      
+    it 'uses the html provided'
+      html = '<h1>hello dialog</h1>'
+      dialog = builder.init({html = html})
+      dialog.show()
+      expect(document.getElementById(dialog.id).innerHTML).to.equal(html)
+
+    it 'uses html from a provided selector'
+      existing = document.createElement 'div'
+      existing.innerHTML = '<div id="existing-dialog"><h2>existing dialog</h2></div>'
+
+      document.body.appendChild(existing)
+      dialog = builder.init({selector = '#existing-dialog'})
+      expect(dialog.el.innerHTML).to.include('existing dialog')
+      dialog.show()
+      retry!(timeout: 1500)
+        rect = document.getElementById(dialog.id).getBoundingClientRect()
+        expect(rect.top).to.be.at.least(0)
       
   describe 'show'
     it 'is shown'
@@ -33,12 +51,6 @@ describe 'dialog'
         rect = document.getElementById(dialog.id).getBoundingClientRect()
         expect(rect.top).to.be.lessThan(0)
 
-    it 'uses the html provided'
-      html = '<h1>hello dialog</h1>'
-      dialog = builder.init({html = html})
-      dialog.show()
-      expect(document.getElementById(dialog.id).innerHTML).to.equal(html)
-      
   describe 'top'
     it 'animates from the top'
       html = '<h1>top dialog</h1>'

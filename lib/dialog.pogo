@@ -36,14 +36,21 @@ module.exports.init(options)=
   }
 
   dialogs = container.get()
-  dialog.el = document.createElement 'div'
-  dialog.el.id = dialog.id
+  if (options.selector)
+    dialog.el = document.querySelector(options.selector)
+    dialog.el.classList.add 'dialog'
+    if (dialog.el.id)
+      dialog.id = dialog.el.id
+  else
+    dialog.el = document.createElement 'div'
+    dialog.el.id = dialog.id
+    dialogs.appendChild(dialog.el)
+
   dialog.hide()
 
   if (options.html)
     dialog.el.innerHTML = options.html
 
-  dialogs.appendChild(dialog.el)
 
   dialog
 

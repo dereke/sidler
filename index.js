@@ -58,13 +58,21 @@
             }
         };
         dialogs = container.get();
-        dialog.el = document.createElement("div");
-        dialog.el.id = dialog.id;
+        if (options.selector) {
+            dialog.el = document.querySelector(options.selector);
+            dialog.el.classList.add("dialog");
+            if (dialog.el.id) {
+                dialog.id = dialog.el.id;
+            }
+        } else {
+            dialog.el = document.createElement("div");
+            dialog.el.id = dialog.id;
+            dialogs.appendChild(dialog.el);
+        }
         dialog.hide();
         if (options.html) {
             dialog.el.innerHTML = options.html;
         }
-        dialogs.appendChild(dialog.el);
         return dialog;
     };
     show = function(options) {
@@ -95,7 +103,7 @@
     };
 }).call(this);
 },{"./container":1,"./style":3}],3:[function(_dereq_,module,exports){
-(function() { var head = document.getElementsByTagName('head')[0]; style = document.createElement('style'); style.type = 'text/css';var css = "#sidler-dialogs .dialog{position:fixed}#sidler-dialogs .dialog.hide{-webkit-transform:translateY(-100px)}#sidler-dialogs .dialog.top.show{-webkit-animation:slideDown .5s 0s 1 ease forwards}#sidler-dialogs .dialog.right.show{-webkit-animation:slideLeft .5s 0s 1 ease forwards}#sidler-dialogs .dialog.bottom.show{-webkit-animation:slideUp .5s 0s 1 ease forwards}#sidler-dialogs .dialog.left.show{-webkit-animation:slideRight .5s 0s 1 ease forwards}#sidler-dialogs .dialog.top.hide{-webkit-animation:slideHideUp .5s 0s 1 ease forwards}#sidler-dialogs .dialog.right.hide{-webkit-animation:slideHideRight .5s 0s 1 ease forwards}#sidler-dialogs .dialog.bottom.hide{-webkit-animation:slideHideDown .5s 0s 1 ease forwards}#sidler-dialogs .dialog.left.hide{-webkit-animation:slideHideLeft .5s 0s 1 ease forwards}#sidler-dialogs .dialog.top{top:0}#sidler-dialogs .dialog.right{right:0}#sidler-dialogs .dialog.bottom{bottom:0}#sidler-dialogs .dialog.left{left:0}@-webkit-keyframes slideLeft{0%{-webkit-transform:translateX(100px)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideDown{0%{-webkit-transform:translateY(-100px)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideRight{0%{-webkit-transform:translateX(-100px)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideUp{0%{-webkit-transform:translateY(100px)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideHideLeft{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(-100px)}}@-webkit-keyframes slideHideDown{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(100px)}}@-webkit-keyframes slideHideRight{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(100px)}}@-webkit-keyframes slideHideUp{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(-100px)}}";if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style);}())
+(function() { var head = document.getElementsByTagName('head')[0]; style = document.createElement('style'); style.type = 'text/css';var css = ".dialog{position:fixed}.dialog.top.show{-webkit-animation:slideDown .5s 0s 1 ease forwards}.dialog.right.show{-webkit-animation:slideLeft .5s 0s 1 ease forwards}.dialog.bottom.show{-webkit-animation:slideUp .5s 0s 1 ease forwards}.dialog.left.show{-webkit-animation:slideRight .5s 0s 1 ease forwards}.dialog.top.hide{-webkit-animation:slideHideUp .5s 0s 1 ease forwards}.dialog.right.hide{-webkit-animation:slideHideRight .5s 0s 1 ease forwards}.dialog.bottom.hide{-webkit-animation:slideHideDown .5s 0s 1 ease forwards}.dialog.left.hide{-webkit-animation:slideHideLeft .5s 0s 1 ease forwards}.dialog.top{top:0}.dialog.right{right:0}.dialog.bottom{bottom:0}.dialog.left{left:0}@-webkit-keyframes slideLeft{0%{-webkit-transform:translateX(100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideDown{0%{-webkit-transform:translateY(-100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideRight{0%{-webkit-transform:translateX(-100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideUp{0%{-webkit-transform:translateY(100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideHideLeft{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(-100%)}}@-webkit-keyframes slideHideDown{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(100%)}}@-webkit-keyframes slideHideRight{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(100%)}}@-webkit-keyframes slideHideUp{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(-100%)}}";if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style);}())
 },{}]},{},[2])
 (2)
 });

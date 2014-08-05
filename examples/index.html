@@ -7,7 +7,8 @@ window.onload = function(){
     top: sidler.init({html: '<h2>Top</h2>', position: 'top'}),
     right: sidler.init({html: '<h2>Right</h2>', position: 'right'}),
     bottom: sidler.init({html: '<h2>Bottom</h2>', position: 'bottom'}),
-    left: sidler.init({html: '<h2>Left</h2>', position: 'left'})
+    left: sidler.init({html: '<h2>Left</h2>', position: 'left'}),
+    embeded: sidler.init({selector: '#embeded-dialog', position: 'right'})
   }
 }
 
@@ -46,5 +47,11 @@ ul {
     <li><a onclick="dialogs.bottom.toggle()">Bottom</a>
     <li><a onclick="dialogs.left.toggle()">Left</a>
   </ul>
+  <div>
+    <h1>Some content</h1>
+    With some text and an embeded dialog <a onclick="dialogs.embeded.toggle()">toggle</a>
+    <div id="embeded-dialog">
+      <h2>my embeded dialog</h2>
+    </div>
 </body>
 </html>
