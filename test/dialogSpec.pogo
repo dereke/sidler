@@ -15,18 +15,29 @@ describe 'dialog'
       dialog.show()
       expect(document.getElementById(dialog.id).innerHTML).to.equal(html)
 
-    it 'uses html from a provided selector'
-      existing = document.createElement 'div'
-      existing.innerHTML = '<div id="existing-dialog"><h2>existing dialog</h2></div>'
+    describe 'selector option'
+      it 'uses html from a provided selector'
+        existing = document.createElement 'div'
+        existing.innerHTML = '<div id="existing-dialog"><h2>existing dialog</h2></div>'
 
-      document.body.appendChild(existing)
-      dialog = builder.init({selector = '#existing-dialog'})
-      expect(dialog.el.innerHTML).to.include('existing dialog')
-      dialog.show()
-      retry!(timeout: 1500)
-        rect = document.getElementById(dialog.id).getBoundingClientRect()
-        expect(rect.top).to.be.at.least(0)
-      
+        document.body.appendChild(existing)
+        dialog = builder.init({selector = '#existing-dialog'})
+        expect(dialog.el.innerHTML).to.include('existing dialog')
+        dialog.show()
+        retry!(timeout: 1500)
+          rect = document.getElementById(dialog.id).getBoundingClientRect()
+          expect(rect.top).to.be.at.least(0)
+
+      it 'preserves the existing elements class names' 
+        existing = document.createElement 'div'
+        existing.innerHTML = '<div id="existing-dialog2" class="fancy"><h2>existing dialog2</h2></div>'
+
+        document.body.appendChild(existing)
+        dialog = builder.init({selector = '#existing-dialog2'})
+        expect(dialog.el.classList.contains('fancy')).to.be.true
+        dialog.show()
+        expect(dialog.el.classList.contains('fancy')).to.be.true
+              
   describe 'show'
     it 'is shown'
       dialog = builder.init({html = '<h1>Show</h1>'})

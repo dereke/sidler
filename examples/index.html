@@ -33,6 +33,13 @@ body {
   height: 100%;
 }
 
+.fancy {
+  z-index: 2;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
 ul {
   margin: 200px;
 }
@@ -50,7 +57,7 @@ ul {
   <div>
     <h1>Some content</h1>
     With some text and an embeded dialog <a onclick="dialogs.embeded.toggle()">toggle</a>
-    <div id="embeded-dialog">
+    <div id="embeded-dialog" class="fancy">
       <h2>my embeded dialog</h2>
     </div>
 </body>

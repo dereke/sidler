@@ -21,13 +21,15 @@ module.exports.init(options)=
   dialog = {
     id = "sidler-dialog-#(dialog count)"
     show()=
-      self.el.set attribute('class', "sidler-dialog #(position) show")
+      self.el.classList.remove('hide')
+      self.el.classList.add('show')
 
     hide()=
-      self.el.set attribute('class', "sidler-dialog #(position) hide")
+      self.el.classList.remove('show')
+      self.el.classList.add('hide')
 
     toggle()=
-      showing = (self.el.get attribute('class').index of('show') != -1)
+      showing = self.el.classList.contains('show')
       if (showing)
         self.hide()
       else
@@ -38,7 +40,6 @@ module.exports.init(options)=
   dialogs = container.get()
   if (options.selector)
     dialog.el = document.querySelector(options.selector)
-    dialog.el.classList.add 'sidler-dialog'
     if (dialog.el.id)
       dialog.id = dialog.el.id
   else
@@ -46,7 +47,9 @@ module.exports.init(options)=
     dialog.el.id = dialog.id
     dialogs.appendChild(dialog.el)
 
-  dialog.el.set attribute('class', "sidler-dialog #(position)")
+
+  dialog.el.classList.add('sidler-dialog')
+  dialog.el.classList.add(position)
 
   if (options.html)
     dialog.el.innerHTML = options.html

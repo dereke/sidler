@@ -40,16 +40,18 @@
             id: "sidler-dialog-" + dialogCount,
             show: function() {
                 var self = this;
-                return self.el.setAttribute("class", "sidler-dialog " + position + " show");
+                self.el.classList.remove("hide");
+                return self.el.classList.add("show");
             },
             hide: function() {
                 var self = this;
-                return self.el.setAttribute("class", "sidler-dialog " + position + " hide");
+                self.el.classList.remove("show");
+                return self.el.classList.add("hide");
             },
             toggle: function() {
                 var self = this;
                 var showing;
-                showing = self.el.getAttribute("class").indexOf("show") !== -1;
+                showing = self.el.classList.contains("show");
                 if (showing) {
                     return self.hide();
                 } else {
@@ -60,7 +62,6 @@
         dialogs = container.get();
         if (options.selector) {
             dialog.el = document.querySelector(options.selector);
-            dialog.el.classList.add("sidler-dialog");
             if (dialog.el.id) {
                 dialog.id = dialog.el.id;
             }
@@ -69,7 +70,8 @@
             dialog.el.id = dialog.id;
             dialogs.appendChild(dialog.el);
         }
-        dialog.el.setAttribute("class", "sidler-dialog " + position);
+        dialog.el.classList.add("sidler-dialog");
+        dialog.el.classList.add(position);
         if (options.html) {
             dialog.el.innerHTML = options.html;
         }
