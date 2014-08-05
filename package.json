@@ -1,0 +1,27 @@
+{
+  "name": "sidler",
+  "version": "0.0.1",
+  "description": "A library to show dialogs at any edge of the screen",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start",
+    "build": "browserify lib/dialog.pogo --standalone sidler -o index.js -t 'pogoify' --extension=.pogo"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^3.46.1",
+    "chai": "^1.9.1",
+    "karma": "~0.12.3",
+    "karma-bro": "^0.6.2",
+    "karma-chai-plugins": "~0.1.3",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-mocha": "^0.1.6",
+    "mocha": "^1.21.3",
+    "pogoify": "^0.1.0"
+  },
+  "dependencies": {
+    "bluebird": "^2.2.2",
+    "pogo": "^0.8.9"
+  }
+}
