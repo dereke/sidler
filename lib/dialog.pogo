@@ -1,11 +1,7 @@
-style       = require './style'
+require './style'
 container   = require './container'
 
-style.init()
-
-
 dialog count = 0
-
 
 module.exports.init(options)=
   defaults = {

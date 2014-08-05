@@ -10,8 +10,8 @@ module.exports = function(config) {
     ],
 
     browserify: {
-      extensions: ['.pogo'],
-      transform: ['pogoify'],
+      extensions: ['.pogo', '.less'],
+      transform: ['pogoify', 'node-lessify'],
     },
 
 

@@ -18,10 +18,9 @@
 },{}],2:[function(_dereq_,module,exports){
 (function() {
     var self = this;
-    var style, container, dialogCount, show;
-    style = _dereq_("./style");
+    var container, dialogCount, show;
+    _dereq_("./style");
     container = _dereq_("./container");
-    style.init();
     dialogCount = 0;
     module.exports.init = function(options) {
         var self = this;
@@ -96,19 +95,7 @@
     };
 }).call(this);
 },{"./container":1,"./style":3}],3:[function(_dereq_,module,exports){
-(function() {
-    var self = this;
-    module.exports.init = function() {
-        var self = this;
-        var head, style;
-        head = document.getElementsByTagName("head");
-        style = document.createElement("style");
-        style.type = "text/css";
-        style.id = "sidler-style";
-        head[0].appendChild(style);
-        return style.innerHTML = "\n#sidler-dialogs .dialog {\n  position: fixed; \n}\n\n#sidler-dialogs .dialog.hide {\n  -webkit-transform: translateY(-100px);\n}\n  \n#sidler-dialogs .dialog.top.show {\n  -webkit-animation: slideDown 0.5s 0s 1 ease forwards;\n}\n\n#sidler-dialogs .dialog.right.show {\n  -webkit-animation: slideLeft 0.5s 0s 1 ease forwards;\n}\n\n#sidler-dialogs .dialog.bottom.show {\n  -webkit-animation: slideUp 0.5s 0s 1 ease forwards;\n}\n\n#sidler-dialogs .dialog.left.show {\n  -webkit-animation: slideRight 0.5s 0s 1 ease forwards;\n}\n\n#sidler-dialogs .dialog.top.hide {\n  -webkit-animation: slideHideUp 0.5s 0s 1 ease forwards;\n}\n\n#sidler-dialogs .dialog.right.hide {\n  -webkit-animation: slideHideRight 0.5s 0s 1 ease forwards;\n}\n\n#sidler-dialogs .dialog.bottom.hide {\n  -webkit-animation: slideHideDown 0.5s 0s 1 ease forwards;\n}\n\n#sidler-dialogs .dialog.left.hide {\n  -webkit-animation: slideHideLeft 0.5s 0s 1 ease forwards;\n}\n\n#sidler-dialogs .dialog.top {\n  top: 0px;\n}\n\n#sidler-dialogs .dialog.right {\n  right: 0px;\n}\n\n#sidler-dialogs .dialog.bottom {\n  bottom: 0px;\n}\n\n#sidler-dialogs .dialog.left {\n  left: 0px;\n}\n\n@-webkit-keyframes slideLeft {\n  0% { -webkit-transform: translateX(100px); }\n  100% { -webkit-transform: translateX(0px); }\n}\n\n@-webkit-keyframes slideDown {\n  0% { -webkit-transform: translateY(-100px); }\n  100% { -webkit-transform: translateY(0px); }\n}\n@-webkit-keyframes slideRight {\n  0% { -webkit-transform: translateX(-100px); }\n  100% { -webkit-transform: translateX(0px); }\n}\n\n@-webkit-keyframes slideUp {\n  0% { -webkit-transform: translateY(100px); }\n  100% { -webkit-transform: translateY(0px); }\n}\n\n@-webkit-keyframes slideHideLeft {\n  0% { -webkit-transform: translateX(0px); }\n  100% { -webkit-transform: translateX(-100px); }\n}\n\n@-webkit-keyframes slideHideDown {\n  0% { -webkit-transform: translateY(0px); }\n  100% { -webkit-transform: translateY(100px); }\n}\n@-webkit-keyframes slideHideRight {\n  0% { -webkit-transform: translateX(0px); }\n  100% { -webkit-transform: translateX(100px); }\n}\n\n@-webkit-keyframes slideHideUp {\n  0% { -webkit-transform: translateY(0px); }\n  100% { -webkit-transform: translateY(-100px); }\n}\n\n";
-    };
-}).call(this);
+(function() { var head = document.getElementsByTagName('head')[0]; style = document.createElement('style'); style.type = 'text/css';var css = "#sidler-dialogs .dialog{position:fixed}#sidler-dialogs .dialog.hide{-webkit-transform:translateY(-100px)}#sidler-dialogs .dialog.top.show{-webkit-animation:slideDown .5s 0s 1 ease forwards}#sidler-dialogs .dialog.right.show{-webkit-animation:slideLeft .5s 0s 1 ease forwards}#sidler-dialogs .dialog.bottom.show{-webkit-animation:slideUp .5s 0s 1 ease forwards}#sidler-dialogs .dialog.left.show{-webkit-animation:slideRight .5s 0s 1 ease forwards}#sidler-dialogs .dialog.top.hide{-webkit-animation:slideHideUp .5s 0s 1 ease forwards}#sidler-dialogs .dialog.right.hide{-webkit-animation:slideHideRight .5s 0s 1 ease forwards}#sidler-dialogs .dialog.bottom.hide{-webkit-animation:slideHideDown .5s 0s 1 ease forwards}#sidler-dialogs .dialog.left.hide{-webkit-animation:slideHideLeft .5s 0s 1 ease forwards}#sidler-dialogs .dialog.top{top:0}#sidler-dialogs .dialog.right{right:0}#sidler-dialogs .dialog.bottom{bottom:0}#sidler-dialogs .dialog.left{left:0}@-webkit-keyframes slideLeft{0%{-webkit-transform:translateX(100px)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideDown{0%{-webkit-transform:translateY(-100px)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideRight{0%{-webkit-transform:translateX(-100px)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideUp{0%{-webkit-transform:translateY(100px)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideHideLeft{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(-100px)}}@-webkit-keyframes slideHideDown{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(100px)}}@-webkit-keyframes slideHideRight{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(100px)}}@-webkit-keyframes slideHideUp{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(-100px)}}";if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style);}())
 },{}]},{},[2])
 (2)
 });
