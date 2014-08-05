@@ -46,7 +46,7 @@ module.exports.init(options)=
     dialog.el.id = dialog.id
     dialogs.appendChild(dialog.el)
 
-  dialog.hide()
+  dialog.el.set attribute('class', "dialog #(position)")
 
   if (options.html)
     dialog.el.innerHTML = options.html
