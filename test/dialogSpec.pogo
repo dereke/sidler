@@ -46,7 +46,7 @@ describe 'dialog'
 
       retry!
         expect(getComputedStyle(document.getElementById(dialog.id), null).top).to.equal('0px')
-        expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('absolute')
+        expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('fixed')
 
 
   describe 'right'
@@ -56,7 +56,7 @@ describe 'dialog'
 
       retry!
         expect(getComputedStyle(document.getElementById(dialog.id), null).right).to.equal('0px')
-        expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('absolute')
+        expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('fixed')
 
   describe 'left'
     it 'animates from the left'
@@ -65,7 +65,7 @@ describe 'dialog'
 
       retry!
         expect(getComputedStyle(document.getElementById(dialog.id), null).left).to.equal('0px')
-        expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('absolute')
+        expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('fixed')
 
 
   describe 'bottom'
@@ -75,4 +75,4 @@ describe 'dialog'
 
       retry!
         expect(getComputedStyle(document.getElementById(dialog.id), null).bottom).to.equal('0px')
-        expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('absolute')
+        expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('fixed')

@@ -7,7 +7,7 @@ module.exports.init()=
 
   style.innerHTML = "
 #sidler-dialogs .dialog {
-  position: absolute; 
+  position: fixed; 
 }
 
 #sidler-dialogs .dialog.hide {
