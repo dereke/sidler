@@ -3,20 +3,7 @@ container   = require './container'
 
 dialog count = 0
 
-module.exports.init(options)=
-  defaults = {
-    position = 'top'
-  }
-
-  if (!options)
-    options := {}
-
-  if (!options.position)
-    options.position = defaults.position
-
-  position = options.position
-
-
+module.exports.init(position = 'top', selector = nil, html = nil, modal = true) =
   ++dialog count
   dialog = {
     id = "sidler-dialog-#(dialog count)"
@@ -34,12 +21,11 @@ module.exports.init(options)=
         self.hide()
       else
         self.show()
-
   }
 
   dialogs = container.get()
-  if (options.selector)
-    dialog.el = document.querySelector(options.selector)
+  if (selector)
+    dialog.el = document.querySelector(selector)
     if (dialog.el.id)
       dialog.id = dialog.el.id
   else
@@ -50,9 +36,11 @@ module.exports.init(options)=
 
   dialog.el.classList.add('sidler-dialog')
   dialog.el.classList.add(position)
+  if (modal)
+    dialog.el.classList.add('modal')
 
-  if (options.html)
-    dialog.el.innerHTML = options.html
+  if (html)
+    dialog.el.innerHTML = html
 
 
   dialog

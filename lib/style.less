@@ -1,36 +1,40 @@
+@animation-duration: 0.5s;
+
 .sidler-dialog {
-  position: fixed; 
+  &.modal {
+    position: fixed; 
+  }
 
   &.top.show {
-    -webkit-animation: slideDown 0.5s 0s 1 ease forwards;
+    -webkit-animation: slideDown @animation-duration 0s 1 ease forwards;
   }
 
   &.right.show {
-    -webkit-animation: slideLeft 0.5s 0s 1 ease forwards;
+    -webkit-animation: slideLeft @animation-duration 0s 1 ease forwards;
   }
 
   &.bottom.show {
-    -webkit-animation: slideUp 0.5s 0s 1 ease forwards;
+    -webkit-animation: slideUp @animation-duration 0s 1 ease forwards;
   }
 
   &.left.show {
-    -webkit-animation: slideRight 0.5s 0s 1 ease forwards;
+    -webkit-animation: slideRight @animation-duration 0s 1 ease forwards;
   }
 
   &.top.hide {
-    -webkit-animation: slideHideUp 0.5s 0s 1 ease forwards;
+    -webkit-animation: slideHideUp @animation-duration 0s 1 ease forwards;
   }
 
   &.right.hide {
-    -webkit-animation: slideHideRight 0.5s 0s 1 ease forwards;
+    -webkit-animation: slideHideRight @animation-duration 0s 1 ease forwards;
   }
 
   &.bottom.hide {
-    -webkit-animation: slideHideDown 0.5s 0s 1 ease forwards;
+    -webkit-animation: slideHideDown @animation-duration 0s 1 ease forwards;
   }
 
   &.left.hide {
-    -webkit-animation: slideHideLeft 0.5s 0s 1 ease forwards;
+    -webkit-animation: slideHideLeft @animation-duration 0s 1 ease forwards;
   }
 
   &.top {

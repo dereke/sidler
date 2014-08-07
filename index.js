@@ -22,19 +22,14 @@
     _dereq_("./style");
     container = _dereq_("./container");
     dialogCount = 0;
-    module.exports.init = function(options) {
+    module.exports.init = function(gen1_options) {
         var self = this;
-        var defaults, position, dialog, dialogs;
-        defaults = {
-            position: "top"
-        };
-        if (!options) {
-            options = {};
-        }
-        if (!options.position) {
-            options.position = defaults.position;
-        }
-        position = options.position;
+        var position, selector, html, modal;
+        position = gen1_options !== void 0 && Object.prototype.hasOwnProperty.call(gen1_options, "position") && gen1_options.position !== void 0 ? gen1_options.position : "top";
+        selector = gen1_options !== void 0 && Object.prototype.hasOwnProperty.call(gen1_options, "selector") && gen1_options.selector !== void 0 ? gen1_options.selector : void 0;
+        html = gen1_options !== void 0 && Object.prototype.hasOwnProperty.call(gen1_options, "html") && gen1_options.html !== void 0 ? gen1_options.html : void 0;
+        modal = gen1_options !== void 0 && Object.prototype.hasOwnProperty.call(gen1_options, "modal") && gen1_options.modal !== void 0 ? gen1_options.modal : true;
+        var dialog, dialogs;
         ++dialogCount;
         dialog = {
             id: "sidler-dialog-" + dialogCount,
@@ -60,8 +55,8 @@
             }
         };
         dialogs = container.get();
-        if (options.selector) {
-            dialog.el = document.querySelector(options.selector);
+        if (selector) {
+            dialog.el = document.querySelector(selector);
             if (dialog.el.id) {
                 dialog.id = dialog.el.id;
             }
@@ -72,8 +67,11 @@
         }
         dialog.el.classList.add("sidler-dialog");
         dialog.el.classList.add(position);
-        if (options.html) {
-            dialog.el.innerHTML = options.html;
+        if (modal) {
+            dialog.el.classList.add("modal");
+        }
+        if (html) {
+            dialog.el.innerHTML = html;
         }
         return dialog;
     };
@@ -105,7 +103,7 @@
     };
 }).call(this);
 },{"./container":1,"./style":3}],3:[function(_dereq_,module,exports){
-(function() { var head = document.getElementsByTagName('head')[0]; style = document.createElement('style'); style.type = 'text/css';var css = ".sidler-dialog{position:fixed}.sidler-dialog.top.show{-webkit-animation:slideDown .5s 0s 1 ease forwards}.sidler-dialog.right.show{-webkit-animation:slideLeft .5s 0s 1 ease forwards}.sidler-dialog.bottom.show{-webkit-animation:slideUp .5s 0s 1 ease forwards}.sidler-dialog.left.show{-webkit-animation:slideRight .5s 0s 1 ease forwards}.sidler-dialog.top.hide{-webkit-animation:slideHideUp .5s 0s 1 ease forwards}.sidler-dialog.right.hide{-webkit-animation:slideHideRight .5s 0s 1 ease forwards}.sidler-dialog.bottom.hide{-webkit-animation:slideHideDown .5s 0s 1 ease forwards}.sidler-dialog.left.hide{-webkit-animation:slideHideLeft .5s 0s 1 ease forwards}.sidler-dialog.top{top:0;-webkit-transform:translateY(-100%)}.sidler-dialog.right{right:0;-webkit-transform:translateX(100%)}.sidler-dialog.bottom{bottom:0;-webkit-transform:translateY(100%)}.sidler-dialog.left{left:0;-webkit-transform:translateX(-100%)}@-webkit-keyframes slideLeft{0%{-webkit-transform:translateX(100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideDown{0%{-webkit-transform:translateY(-100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideRight{0%{-webkit-transform:translateX(-100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideUp{0%{-webkit-transform:translateY(100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideHideLeft{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(-100%)}}@-webkit-keyframes slideHideDown{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(100%)}}@-webkit-keyframes slideHideRight{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(100%)}}@-webkit-keyframes slideHideUp{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(-100%)}}";if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style);}())
+(function() { var head = document.getElementsByTagName('head')[0]; style = document.createElement('style'); style.type = 'text/css';var css = ".sidler-dialog.modal{position:fixed}.sidler-dialog.top.show{-webkit-animation:slideDown .5s 0s 1 ease forwards}.sidler-dialog.right.show{-webkit-animation:slideLeft .5s 0s 1 ease forwards}.sidler-dialog.bottom.show{-webkit-animation:slideUp .5s 0s 1 ease forwards}.sidler-dialog.left.show{-webkit-animation:slideRight .5s 0s 1 ease forwards}.sidler-dialog.top.hide{-webkit-animation:slideHideUp .5s 0s 1 ease forwards}.sidler-dialog.right.hide{-webkit-animation:slideHideRight .5s 0s 1 ease forwards}.sidler-dialog.bottom.hide{-webkit-animation:slideHideDown .5s 0s 1 ease forwards}.sidler-dialog.left.hide{-webkit-animation:slideHideLeft .5s 0s 1 ease forwards}.sidler-dialog.top{top:0;-webkit-transform:translateY(-100%)}.sidler-dialog.right{right:0;-webkit-transform:translateX(100%)}.sidler-dialog.bottom{bottom:0;-webkit-transform:translateY(100%)}.sidler-dialog.left{left:0;-webkit-transform:translateX(-100%)}@-webkit-keyframes slideLeft{0%{-webkit-transform:translateX(100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideDown{0%{-webkit-transform:translateY(-100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideRight{0%{-webkit-transform:translateX(-100%)}100%{-webkit-transform:translateX(0px)}}@-webkit-keyframes slideUp{0%{-webkit-transform:translateY(100%)}100%{-webkit-transform:translateY(0px)}}@-webkit-keyframes slideHideLeft{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(-100%)}}@-webkit-keyframes slideHideDown{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(100%)}}@-webkit-keyframes slideHideRight{0%{-webkit-transform:translateX(0px)}100%{-webkit-transform:translateX(100%)}}@-webkit-keyframes slideHideUp{0%{-webkit-transform:translateY(0px)}100%{-webkit-transform:translateY(-100%)}}";if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style);}())
 },{}]},{},[2])
 (2)
 });
