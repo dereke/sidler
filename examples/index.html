@@ -8,7 +8,8 @@ window.onload = function(){
     right: sidler.init({html: '<h2>Right</h2>', position: 'right'}),
     bottom: sidler.init({html: '<h2>Bottom</h2>', position: 'bottom'}),
     left: sidler.init({html: '<h2>Left</h2>', position: 'left'}),
-    embeded: sidler.init({selector: '#embeded-dialog', position: 'right'})
+    embeded: sidler.init({selector: '#embeded-dialog', position: 'right'}),
+    expand: sidler.init({selector: '#myDialog', position: 'right', modal: false, anchor: false})
   }
 }
 
@@ -24,14 +25,15 @@ body {
   border: 1px black solid;
 }
 
+.sidler-dialog.left, .sidler-dialog.right {
+  top: 0;
+  height: 100%;
+}
+
 .sidler-dialog.top, .sidler-dialog.bottom {
   width: 100%;
 }
 
-.sidler-dialog.right, .sidler-dialog.left {
-  top: 0px;
-  height: 100%;
-}
 
 .fancy {
   z-index: 2;
@@ -44,6 +46,22 @@ ul {
   margin: 200px;
 }
 
+  .container {
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+  }
+  .content {
+    flex: 1;
+    background-color: lightblue;
+  }
+
+  #myDialog {
+    background-color: lightgreen;
+    border: none;
+    padding: 0;
+    height: auto;
+  }
 </style>
 </head>
 <body>
@@ -60,5 +78,16 @@ ul {
     <div id="embeded-dialog" class="fancy">
       <h2>my embeded dialog</h2>
     </div>
+  </div>
+
+  <a onclick="dialogs.expand.toggle()">toggle expander</a>
+  <div class="container">
+      <div class="content">
+        Main content that is always visible and will resize to be proportinate to the dialog
+      </div>
+      <div id="myDialog" class="hide">
+        Modal content that slides in and out
+      </div>
+  </div>
 </body>
 </html>
