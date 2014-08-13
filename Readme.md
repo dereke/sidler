@@ -58,7 +58,7 @@ CSS
     flex-direction: row;
   }
   .content {
-    flex: 1;
+    flex: 1000%;
   }
 
 ```

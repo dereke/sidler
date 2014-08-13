@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <script src="../index.js" type="text/javascript"></script>
@@ -48,11 +49,10 @@ ul {
 
   .container {
     display: flex;
-    flex-direction: row;
     height: 200px;
   }
   .content {
-    flex: 1;
+    width: 1000%;
     background-color: lightblue;
   }
 
@@ -80,7 +80,7 @@ ul {
     </div>
   </div>
 
-  <a onclick="dialogs.expand.toggle()">toggle expander</a>
+  <a onclick="dialogs.expand.toggle()" style="display:block;padding:20px;background-color:green;">toggle expander</a>
   <div class="container">
       <div class="content">
         Main content that is always visible and will resize to be proportinate to the dialog
