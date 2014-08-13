@@ -13,6 +13,11 @@
   @{property}: @value;
 }
 
+.flex(@value){
+  .prefix(flex, @value);
+}
+
+
 .animation(@value) {
   .prefix(animation, @value);
 }
@@ -95,7 +100,6 @@
       width: 0%;
       overflow: hidden;
     }
-
   }
 
   &.anchor {
