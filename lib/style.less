@@ -14,6 +14,11 @@
   @{property}: @value;
 }
 
+.flex(@value){
+  .prefix(flex, @value);
+}
+
+
 .animation(@value) {
   .prefix(animation, @value);
 }
@@ -33,7 +38,7 @@
     }
 
     &.show {
-      flex: 1;
+      .flex(1);
     }
 
     &.hiding {
@@ -42,19 +47,19 @@
     }
 
     &.hide {
-      flex: 0.000001;
+      .flex(0.000001);
       overflow: hidden;
     }
 
     .keyframes(flexGrow, {
       to {
-        flex: 1;
+        .flex(1);
       }
     });
 
     .keyframes(flexShrink, {
       to {
-        flex: 0.000001;
+        .flex(0.000001);
       }
     });
   }
