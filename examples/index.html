@@ -2,13 +2,28 @@
 <html>
 <head>
 <script src="../index.js" type="text/javascript"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
+
+var loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis nunc sed libero eleifend, sit amet fringilla purus fringilla. Donec sodales justo lectus, sed egestas enim convallis sed. Suspendisse potenti. Morbi malesuada vestibulum adipiscing. Fusce iaculis luctus sapien, nec fringilla erat porttitor et. Quisque sed vestibulum lectus, et sollicitudin leo. Donec vel imperdiet est. Donec blandit blandit lacus et eleifend. Aliquam id eros augue. Fusce congue et purus molestie interdum. \
+\
+  <p>Pellentesque vulputate, sapien in auctor sodales, nibh dolor blandit orci, in mollis lorem tellus eget odio. In fringilla quam non faucibus tincidunt. Sed bibendum, leo ut molestie gravida, quam nibh adipiscing sem, id eleifend nulla felis non justo. In vel aliquam leo. Aliquam ut scelerisque lectus, ac cursus ipsum. Nulla euismod nulla eget mi convallis, vitae ullamcorper lorem vestibulum. Nam ac turpis in mi ultrices faucibus. Maecenas et vehicula mi. Sed viverra in lacus at pulvinar. Fusce venenatis purus neque, sit amet varius mauris viverra eu. Fusce elementum porta urna ut vehicula. Duis blandit suscipit leo vel lobortis. Nulla ornare luctus nisi eu lacinia. Pellentesque arcu massa, sodales et semper ut, consequat eu felis. Quisque tincidunt id nulla et pretium.</p> \
+\
+  <p>Nullam fringilla elit quis fermentum faucibus. Vestibulum vitae lorem tincidunt massa tincidunt ornare in eu mauris. Maecenas a lectus quam. Suspendisse et turpis velit. Curabitur vel nisi rutrum, tincidunt arcu vitae, viverra eros. Cras at risus eget ligula varius consequat. Sed vel volutpat est. Nunc nulla odio, accumsan ut tortor vitae, lobortis lobortis tortor. Suspendisse vestibulum, lectus viverra laoreet aliquet, dui velit consectetur orci, non porta nulla justo at ligula. Vivamus magna ante, suscipit in risus id, mollis tincidunt nunc. Nullam semper sem nec nisl varius congue. Donec at iaculis velit. Maecenas accumsan convallis nulla, non varius neque luctus vel. Etiam sem tortor, egestas ut dapibus id, pharetra sit amet nisi.</p> \
+\
+  <p>Fusce feugiat et libero eu lacinia. Aliquam rutrum convallis elit. Ut venenatis nisi tristique sapien mattis, eget facilisis magna semper. Phasellus diam diam, mollis ac ullamcorper sed, convallis at eros. Morbi porttitor adipiscing tellus, sit amet volutpat eros rhoncus non. Etiam tincidunt blandit aliquam. Integer porttitor sit amet tortor tempus semper. Mauris ultricies iaculis odio at feugiat. Proin rutrum nulla arcu, eget condimentum velit mattis nec. Cras in interdum metus, vel commodo ante. Nulla imperdiet aliquam mi, ut varius ipsum elementum nec. Integer consectetur dui arcu, elementum elementum nunc dictum congue.</p> \
+\
+  <p>Vivamus id mi elit. Donec sed odio non lacus interdum pulvinar at nec risus. In condimentum, lectus eu tempus volutpat, nulla erat volutpat mi, sit amet bibendum tortor enim nec ipsum. In hac habitasse platea dictumst. Donec iaculis nibh in massa lacinia pellentesque. Aliquam scelerisque feugiat magna ut vehicula. Phasellus eget neque consectetur, vestibulum lacus sed, accumsan nulla. Etiam sagittis metus quam, ac sodales orci sagittis ac. Vestibulum a viverra enim. Aenean volutpat mi ligula, nec consequat erat tempor quis. Ut volutpat tempus augue.</p>";
 window.onload = function(){
+
+  function closeHtml(dialog){
+    return '<a onclick="dialogs.'+dialog+'.hide()" class="close">X</a>';
+  }
   window.dialogs = {
-    top: sidler.init({html: '<h2>Top</h2>', position: 'top'}),
-    right: sidler.init({html: '<h2>Right</h2>', position: 'right'}),
-    bottom: sidler.init({html: '<h2>Bottom</h2>', position: 'bottom'}),
-    left: sidler.init({html: '<h2>Left</h2>', position: 'left'}),
+top: sidler.init({html: closeHtml('top')+'<h2>Top</h2>'+loremIpsum, position: 'top'}),
+    right: sidler.init({html: closeHtml('right')+'<h2>Right</h2>'+loremIpsum, position: 'right'}),
+    bottom: sidler.init({html: closeHtml('bottom')+'<h2>Bottom</h2>'+loremIpsum, position: 'bottom'}),
+    left: sidler.init({html: closeHtml('left')+'<h2>Left</h2>'+loremIpsum, position: 'left'}),
     embeded: sidler.init({selector: '#embeded-dialog', position: 'right'}),
     expand: sidler.init({selector: '#myDialog', position: 'right', modal: false, anchor: false})
   }
@@ -17,35 +32,53 @@ window.onload = function(){
 
 </script>
 <style>
-body {
-  margin: 0px;
-}
-.sidler-dialog {
-  background-color: white;
-  padding: 2px;
-  border: 1px black solid;
-}
+  body {
+    margin: 0px;
+  }
+  * {
+    font-family: 'Open Sans', sans-serif; 
+    color: #000000;     
+  }
 
-.sidler-dialog.left, .sidler-dialog.right {
-  top: 0;
-  height: 100%;
-}
+  h1 {
+    margin: 0 auto;
+    padding: 20px;
+    width: 50%;
+  }
 
-.sidler-dialog.top, .sidler-dialog.bottom {
-  width: 100%;
-}
+  .sidler-dialog {
+    background-color: white;
+    padding: 30px;
+    margin: 0px;
+    border: 1px black solid;
+  }
 
+  .sidler-dialog.left, .sidler-dialog.right {
+    top: 0;
+    height: 100%;
+    width: 20%;
+  }
 
-.fancy {
-  z-index: 2;
-  background-color: red;
-  color: white;
-  font-weight: bold;
-}
+  .sidler-dialog.top, .sidler-dialog.bottom {
+    width: 100%;
+    height: 200px;
+    overflow: scroll;
+  }
 
-ul {
-  margin: 200px;
-}
+  .fancy {
+    z-index: 2;
+    background-color: #ff9999;
+    color: white;
+    font-weight: bold;
+  }
+
+  .close {
+    float: right;
+    font-size: 22pt;
+    padding: 20px;
+    margin-right: 20px;
+  }
+
 
   .container {
     display: -webkit-flex;
@@ -63,32 +96,53 @@ ul {
     padding: 0;
     height: auto;
   }
+
+  .positional {
+    z-index: 100;
+    background-color: white;
+    width: 50%;
+    margin: 5px auto;
+    padding: 5px;
+    border: 1px black solid;
+  }
+  .positional a {
+    display: inline-block;
+    text-align: center;
+    color: darkblue;
+    margin-right: 10px;
+  }
+
 </style>
 </head>
 <body>
   <h1>Sidler Demo</h1>
-  <ul>
-    <li><a onclick="dialogs.top.toggle()">Top</a>
-    <li><a onclick="dialogs.right.toggle()">Right</a>
-    <li><a onclick="dialogs.bottom.toggle()">Bottom</a>
-    <li><a onclick="dialogs.left.toggle()">Left</a>
-  </ul>
-  <div>
-    <h1>Some content</h1>
-    With some text and an embeded dialog <a onclick="dialogs.embeded.toggle()">toggle</a>
+  <div class="positional">
+    <p>Toggle a dialog a at one or all of the screen edges</p>
+      <a onclick="dialogs.top.toggle()">Top</a>
+      <a onclick="dialogs.right.toggle()">Right</a>
+      <a onclick="dialogs.bottom.toggle()">Bottom</a>
+      <a onclick="dialogs.left.toggle()">Left</a>
+  </div>
+  <div class="positional">
+    <p>Toggle the display of an embeded dialog</p>
+    <a onclick="dialogs.embeded.toggle()">Toggle</a>
     <div id="embeded-dialog" class="fancy">
       <h2>my embeded dialog</h2>
+      <p>The contents of this dialog are specified in the DOM and have remained in place.</p>
     </div>
   </div>
 
-  <a onclick="dialogs.expand.toggle()" style="display:block;padding:20px;background-color:green;">toggle expander</a>
-  <div class="container">
-      <div class="content">
-        Main content that is always visible and will resize to be proportinate to the dialog
-      </div>
-      <div id="myDialog" class="hide">
-        Modal content that slides in and out
-      </div>
+  <div class="positional">
+    <p>Toggle an inline dialog</p>
+    <a onclick="dialogs.expand.toggle()">Toggle</a>
+    <div class="container">
+        <div id="content" class="content">
+          Main content that is always visible and will resize to be proportinate to the dialog
+        </div>
+        <div id="myDialog" class="hide">
+          Modal content that slides in and out
+        </div>
+    </div>
   </div>
 </body>
 </html>
