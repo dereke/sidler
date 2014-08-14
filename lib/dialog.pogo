@@ -20,7 +20,7 @@ remove classes(el, classes)=
   for each @(className) in (classes)
     el.classList.remove(className)
 
-module.exports.init(position = 'top', selector = nil, html = nil, modal = true, anchor = true) =
+module.exports.init(position = 'top', selector = nil, html = nil, modal = true, edge = true) =
   ++dialog count
   dialog = {
     id = "sidler-dialog-#(dialog count)"
@@ -60,8 +60,8 @@ module.exports.init(position = 'top', selector = nil, html = nil, modal = true, 
   dialog.el.classList.add('sidler-dialog')
   dialog.el.classList.add(position)
 
-  if (anchor)
-    dialog.el.classList.add('anchor')
+  if (edge)
+    dialog.el.classList.add('edge')
   else
     dialog.el.classList.add('flex')
 
