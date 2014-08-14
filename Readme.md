@@ -1,5 +1,11 @@
 # Sidler
 
+## Goals
+
+* Show dialogs at top/left/bottom/right of the screen
+* Toggle dialog in situ resizing adjacent content
+* Allow content of dialogs to be controlled using frameworks such as angular/react/ember etc.
+
 ## Usage
 
 ### Create a dialog that slides in from the right hand side using existing html
@@ -28,7 +34,7 @@ CSS
   height: 100%;
 ```
 
-### Expand/Contract Flex Box
+### Inline Dialog
 
 JavaScript
 ```
