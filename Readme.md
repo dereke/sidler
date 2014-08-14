@@ -32,7 +32,7 @@ CSS
 
 JavaScript
 ```
-var myDialog = sidler.init({selector: '#myDialog', position: 'right', modal: false, anchor: false})
+var myDialog = sidler.init({selector: '#myDialog', position: 'right', modal: false, edge: false})
 ```
 
 HTML
