@@ -64,7 +64,8 @@
                     removeClasses(self.el, [ "hide", "hidding", "showing" ]);
                     return self.el.classList.add("show");
                 });
-                return self.el.classList.add("showing");
+                self.el.classList.add("showing");
+                return self.el.classList.remove("hide");
             },
             hide: function() {
                 var self = this;
