@@ -11,12 +11,13 @@
 ### Create a dialog that slides in from the right hand side using existing html
 
 JavaScript
-```
+```javascript
 var myDialog = sidler.init({selector: '#myDialog'}, position: 'right', modal: true)
 ```
 
 HTML
-```
+
+```html
 <a onclick="myDialog.show()">show</a>
 <div id="myDialog">
   <h1>My Dialog</h1>
@@ -28,7 +29,7 @@ HTML
 ```
 
 CSS
-```
+```css
 .sidler-dialog.right {
   top: 0px;
   height: 100%;
@@ -37,12 +38,12 @@ CSS
 ### Inline Dialog
 
 JavaScript
-```
+```javascript
 var myDialog = sidler.init({selector: '#myDialog', position: 'right', modal: false, edge: false})
 ```
 
 HTML
-```
+```html
 <a onclick="myDialog.show()">show</a>
 <div class="container">
     <div class="content">
@@ -58,7 +59,7 @@ HTML
 ```
 
 CSS
-```
+```css
   .container {
     display: flex;
     flex-direction: row;
