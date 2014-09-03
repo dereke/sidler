@@ -26,11 +26,10 @@ module.exports.init(position = 'top', selector = nil, html = nil, modal = true, 
     id = "sidler-dialog-#(dialog count)"
     show()=
       onAnimationEnd(self.el)
-        remove classes(self.el, ['hidding', 'showing'])
+        remove classes(self.el, ['hide', 'hidding', 'showing'])
         self.el.classList.add('show')
 
       self.el.classList.add('showing')
-      self.el.classList.remove('hide')
 
     hide()=
       onAnimationEnd(self.el)

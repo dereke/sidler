@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "build": "browserify lib/dialog.pogo --standalone sidler -o index.js -t pogoify -t node-lessify --extension=.pogo --extension=.less"
+    "build": "browserify lib/dialog.pogo --standalone sidler -o index.js -t pogoify -t lessify --extension=.pogo --extension=.less"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +19,7 @@
     "karma-ie-launcher": "^0.1.5",
     "karma-mocha": "^0.1.6",
     "mocha": "^1.21.3",
-    "node-lessify": "0.0.4",
+    "lessify": "0.4.1",
     "pogoify": "^0.1.1"
   },
   "dependencies": {
