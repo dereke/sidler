@@ -11,7 +11,7 @@ module.exports = function(config) {
 
     browserify: {
       extensions: ['.pogo', '.less'],
-      transform: ['pogoify', 'node-lessify'],
+      transform: ['pogoify', 'lessify'],
     },
 
 
@@ -28,7 +28,7 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_DEBUG,
     autoWatch: true,
-    browsers: ['Chrome', 'IE'],
+    browsers: ['Chrome'],
     singleRun: false
   });
 };

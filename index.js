@@ -61,7 +61,7 @@
             show: function() {
                 var self = this;
                 onAnimationEnd(self.el, function() {
-                    removeClasses(self.el, [ "hidding", "showing" ]);
+                    removeClasses(self.el, [ "hide", "hidding", "showing" ]);
                     return self.el.classList.add("show");
                 });
                 return self.el.classList.add("showing");
