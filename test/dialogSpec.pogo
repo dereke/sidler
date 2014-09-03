@@ -71,7 +71,6 @@ describe 'dialog'
         expect(getComputedStyle(document.getElementById(dialog.id), null).top).to.equal('0px')
         expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('fixed')
 
-
   describe 'right'
     it 'animates from the right'
       html = '<h1>right dialog</h1>'
@@ -99,3 +98,29 @@ describe 'dialog'
       retry!
         expect(getComputedStyle(document.getElementById(dialog.id), null).bottom).to.equal('0px')
         expect(getComputedStyle(document.getElementById(dialog.id), null).position).to.equal('fixed')
+
+  describe 'modal'
+    it 'hides the dialog when clicking the overlay' =>
+      self.timeout(5000)
+      html = '<h1>hello dialog</h1>'
+      dialog = builder.init({html = html})
+      dialog.show()
+
+      retry!(timeout: 1500)
+        document.getElementsByClassName('sidler-overlay').0.click()
+        retry!(timeout: 1500)
+          rect = document.getElementById(dialog.id).getBoundingClientRect()
+          expect(rect.top).to.be.lessThan(0)
+
+    it'does not hide the dialog when clicking the dialog' =>
+      self.timeout(5000)
+      html = '<h1 id="myModal">hello dialog</h1>'
+      dialog = builder.init({html = html})
+      dialog.show()
+
+      retry!(timeout: 1500)
+        document.getElementById('myModal').click()
+        retry!(timeout: 1500)
+          rect = document.getElementById(dialog.id).getBoundingClientRect()
+          expect(rect.top).to.be.at.least(0)
+          expect(rect.left).to.be.at.least(0)

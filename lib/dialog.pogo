@@ -20,14 +20,44 @@ remove classes(el, classes)=
   for each @(className) in (classes)
     el.classList.remove(className)
 
+overlay = '<div class="sidler-overlay"></div>'
+
 module.exports.init(position = 'top', selector = nil, html = nil, modal = true, edge = true) =
   ++dialog count
+
+
+
+  makeModal()=
+    overlay = document.createElement 'div'
+    overlay.className = 'sidler-overlay'
+    document.body.insertBefore(overlay, document.body.firstChild)
+    closeModal(e)=
+      parentElement = e.target
+      clickedWithinDialog = false
+      while (parentElement != null)
+        if (parentElement == dialog.el)
+          clickedWithinDialog := true
+          parentElement := null
+        else
+          parentElement := parentElement.parentElement
+
+      if (!clickedWithinDialog)
+        document.body.removeChild(overlay)
+        overlay.removeEventListener('click', closeModal, false) 
+        dialog.hide()
+
+    overlay.addEventListener('click', closeModal, false) 
+
   dialog = {
     id = "sidler-dialog-#(dialog count)"
     show()=
+
       onAnimationEnd(self.el)
         remove classes(self.el, ['hide', 'hidding', 'showing'])
         self.el.classList.add('show')
+
+      if (modal)
+        makeModal()
 
       self.el.classList.add('showing')
 

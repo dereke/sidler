@@ -7,6 +7,7 @@
     window.addEventListener('load', function(){
       window.example1 = sidler.init({selector: '#example1', position: 'right', modal: true});
       window.example2 = sidler.init({selector: '#example2', position: 'right', modal: false, edge: false});
+      window.example3 = sidler.init({selector: '#example3', position: 'top', modal: true, edge: true});
     }, false);
   </script>
   <style type="text/css">
@@ -32,6 +33,19 @@
     #example2 > div {
       padding: 10px;
     }
+
+    #example3 {
+      padding-top:100px;
+      left: 100px;
+      right: 100px;
+    }
+
+    #example3 .border {
+      background-color: white;
+      border: 5px solid #b78d94;
+      padding: 10px;
+    }
+
 
   </style>
 </head>
@@ -92,7 +106,7 @@
 
     <p>For more options check out the <a href="#api">API</a></p>
 
-    <div id="example1">
+    <div id="example1" class="hide">
       <h1>Example 1</h1>
       <p>This dialog is modal and appears from the right hand edge</p>
       <p>
@@ -172,6 +186,50 @@
   </section>
 
   <section>
+    <h2>A Centered Modal</h2>
+    <p><a href="#" onclick="example3.toggle();return false;">Click here</a> to toggle the dialog</p>
+
+
+    <h3>Add the dialog element to your page</h3>
+
+    <pre><code class="html">
+      &lt;div id=&quot;example3&quot; class=&quot;hide&quot;&gt;                                                                                                                                                                         
+        &lt;div class=&quot;border&quot;&gt;
+          &lt;h1&gt;Example 3&lt;/h1&gt;
+          &lt;p&gt;A centred modal dialog&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    </code></pre>
+
+    <h3>Initialize sidler</h3>
+    <pre><code class="javascript">
+      var example3 = sidler.init({selector: '#example3', position: 'top', modal: true, edge: true});
+    </code></pre>
+   
+    <h3>Style the dialog</h3>
+    <pre><code class="css">
+    #example3 {
+      padding-top:100px;
+      left: 100px;
+      right: 100px;
+    }
+
+    #example3 .border {
+      background-color: white;
+      border: 5px solid #b78d94;
+      padding: 10px;
+    }
+    </code></pre>
+
+    <div id="example3" class="hide">
+      <div class="border">
+        <h1>Example 3</h1>
+        <p>A centred modal dialog</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
     <a name="api"></a>
     <h2>API</h2>
 
@@ -198,6 +256,7 @@
       dialog.hide();   // hide the dialog
     </code></pre>
   </section>
+
 </div>
 
 
