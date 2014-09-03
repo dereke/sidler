@@ -1,0 +1,205 @@
+<html>
+<head>
+  <title>Sidler - the dialog library</title>
+  <script src="web.js" type="text/javascript"></script>
+  <script src="index.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    window.addEventListener('load', function(){
+      window.example1 = sidler.init({selector: '#example1', position: 'right', modal: true});
+      window.example2 = sidler.init({selector: '#example2', position: 'right', modal: false, edge: false});
+    }, false);
+  </script>
+  <style type="text/css">
+    #example1 {
+      background-color: white;
+      height: 100%; 
+      top: 0;
+      padding: 10px;
+      border-left:30px solid #b78d94;
+    }
+
+    .example2.container {
+      display: -webkit-flex;
+      display: flex;
+      height: 500px;
+    }
+
+    .example2 .content {
+      width: 2000%;
+      background-color: lightblue;
+    }
+
+    #example2 > div {
+      padding: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="content">
+  <section>
+    <h1>
+      sidler <p>the dialog library</p>
+    </h1>
+  </section>
+
+  <section>
+    <h2>Getting Started</h2>
+
+    <pre><code class="bash">npm install git://github.com/dereke/sidler --save</code></pre>
+  </section>
+
+  <section>
+    <h2>Your first dialog</h2>
+
+    <p>Show a dialog that appears from the right hand side of the page</p>
+
+    <p><a href="#" onclick="example1.toggle();return false;">Click here</a> to toggle the dialog</p>
+
+    <p>Here is how to do it</p>
+
+    <h3>Add the dialog element to your page (anywhere in the DOM is fine)</h3>
+
+    <pre><code class="html">
+      &lt;div id=&quot;example1&quot;&gt;
+        &lt;h1&gt;Example 1&lt;/h1&gt;
+        &lt;p&gt;This dialog is modal and appears from the right hand edge&lt;/p&gt;
+      &lt;/div&gt;
+    </code></pre>
+
+    <h3>Style the dialog</h3>
+
+    <pre><code class="css">
+    #example1 {
+      background-color: white;
+      height: 100%; 
+      top: 0;
+      padding: 10px;
+      border-left:30px solid #b78d94;
+    }
+    </code></pre>
+
+    <h3>Initialize sidler</h3>
+    <pre><code class="javascript">
+      var example1 = sidler.init({selector: '#example1', position: 'right', modal: true});
+    </code></pre>
+
+    <h3>Show the dialog</h3>
+    <pre><code class="javascript">
+      example1.show();
+    </code></pre>
+
+    <p>For more options check out the <a href="#api">API</a></p>
+
+    <div id="example1">
+      <h1>Example 1</h1>
+      <p>This dialog is modal and appears from the right hand edge</p>
+      <p>
+        You can hide it like this:
+        <pre><code class="javascript">example1.hide();</code></pre>
+
+        <a href="#" onclick="example1.hide();return false;">Click to hide</a>
+      </p>
+    </div>
+  </section>
+
+
+  <section>
+    <h2>How about an inline dialog?</h2>
+
+    <p><a href="#" onclick="example2.toggle();return false;">Click here</a> to toggle the dialog</p>
+
+    <div class="example2 container">
+      <div class="content">
+        This is the main content area where you would display anything to the user
+      </div>
+      <div id="example2" class="hide">
+        <div>
+          <h1>Example 2</h1>
+          <p>In a horrible case of cross browser support the size of this dialog is determined by the size of the content area.</p>
+          <p>A size of 1000% for the content area indicates that the content area will fill 50% of the available space when the dialog is expanded.</p>
+          <p>A size of 2000% for the content area indiciates that the content area will fill twice that of the dialog when the dialog is expanded.</p>
+          <a href="#" onclick="example2.hide();return false;">hide</a>
+        </div>
+      </div>
+    </div>
+
+    <h3>Add the dialog element to your page</h3>
+
+    <pre><code class="html">
+      &lt;div class=&quot;example2 container&quot;&gt;
+        &lt;div class=&quot;content&quot;&gt;
+          This is the main content area where you would display anything to the user
+        &lt;/div&gt;
+        &lt;div id=&quot;example2&quot; class=&quot;hide&quot;&gt;
+          &lt;div&gt;
+            &lt;h1&gt;Example 2&lt;/h1&gt;
+            &lt;a href=&quot;#&quot; onclick=&quot;example2.hide();return false;&quot;&gt;hide&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    </code></pre>
+
+    <h3>Style the dialog</h3>
+
+    <pre><code class="css">
+    .example2.container {
+      display: -webkit-flex;
+      display: flex;
+      height: 500px;
+    }
+
+    .example2 .content {
+      width: 2000%;
+      background-color: lightblue;
+    }
+
+    #example2 > div {
+      padding: 10px;
+    }
+    </code></pre>
+
+    <h3>Initialize sidler</h3>
+    <pre><code class="javascript">
+      var example2 = sidler.init({selector: '#example2', position: 'right', modal: false, edge: false})
+    </code></pre>
+
+    <h3>Show the dialog</h3>
+    <pre><code class="javascript">
+      example2.show();
+    </code></pre>
+  </section>
+
+  <section>
+    <a name="api"></a>
+    <h2>API</h2>
+
+    <h3>Initialize</h3>
+    <pre><code class="javascript">
+      var dialog = sidler.init({selector: '#dialog', position: 'right'});
+    </code></pre>
+
+    <h3>Parameters</h3>
+
+    <h4>selector</h4>
+    <p>The css selector used to find the dialog element</p>
+
+    <h4>position</h4>
+    <p>top|right|bottom|left - the edge of the screen the dialog should appear from (requires the edge parameter to be true)</p>
+
+    <h4>edge</h4>
+    <p>true|false - make the dialog appear from the edge of the screen</p>
+
+    <h3>Methods</h3>
+    <pre><code class="javascript">
+      dialog.toggle(); // toggle show/hide
+      dialog.show();   // show the dialog
+      dialog.hide();   // hide the dialog
+    </code></pre>
+  </section>
+</div>
+
+
+</body>
+</html>
