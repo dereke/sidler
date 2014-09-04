@@ -55,8 +55,9 @@
         html = gen3_options !== void 0 && Object.prototype.hasOwnProperty.call(gen3_options, "html") && gen3_options.html !== void 0 ? gen3_options.html : void 0;
         modal = gen3_options !== void 0 && Object.prototype.hasOwnProperty.call(gen3_options, "modal") && gen3_options.modal !== void 0 ? gen3_options.modal : true;
         edge = gen3_options !== void 0 && Object.prototype.hasOwnProperty.call(gen3_options, "edge") && gen3_options.edge !== void 0 ? gen3_options.edge : true;
-        var makeModal, dialog, dialogs;
+        var modalDialog, makeModal, dialog, dialogs;
         ++dialogCount;
+        modalDialog = void 0;
         makeModal = function() {
             var overlay, closeModal;
             overlay = document.createElement("div");
@@ -75,12 +76,18 @@
                     }
                 }
                 if (!clickedWithinDialog) {
-                    document.body.removeChild(overlay);
-                    overlay.removeEventListener("click", closeModal, false);
                     return dialog.hide();
                 }
             };
-            return overlay.addEventListener("click", closeModal, false);
+            overlay.addEventListener("click", closeModal, false);
+            return modalDialog = {
+                remove: function() {
+                    var self = this;
+                    document.body.removeChild(overlay);
+                    overlay.removeEventListener("click", closeModal, false);
+                    return modalDialog = void 0;
+                }
+            };
         };
         dialog = {
             id: "sidler-dialog-" + dialogCount,
@@ -101,7 +108,10 @@
                     removeClasses(self.el, [ "show", "showing", "hiding" ]);
                     return self.el.classList.add("hide");
                 });
-                return self.el.classList.add("hiding");
+                self.el.classList.add("hiding");
+                if (modalDialog) {
+                    return modalDialog.remove();
+                }
             },
             toggle: function() {
                 var self = this;

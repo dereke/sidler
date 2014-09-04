@@ -25,7 +25,7 @@ overlay = '<div class="sidler-overlay"></div>'
 module.exports.init(position = 'top', selector = nil, html = nil, modal = true, edge = true) =
   ++dialog count
 
-
+  modalDialog = nil
 
   makeModal()=
     overlay = document.createElement 'div'
@@ -42,11 +42,16 @@ module.exports.init(position = 'top', selector = nil, html = nil, modal = true, 
           parentElement := parentElement.parentElement
 
       if (!clickedWithinDialog)
-        document.body.removeChild(overlay)
-        overlay.removeEventListener('click', closeModal, false) 
         dialog.hide()
 
-    overlay.addEventListener('click', closeModal, false) 
+    overlay.addEventListener('click', closeModal, false)
+    
+    modalDialog := {
+      remove()=
+        document.body.removeChild(overlay)
+        overlay.removeEventListener('click', closeModal, false)
+        modalDialog := nil 
+    } 
 
   dialog = {
     id = "sidler-dialog-#(dialog count)"
@@ -66,7 +71,10 @@ module.exports.init(position = 'top', selector = nil, html = nil, modal = true, 
         remove classes(self.el, ['show', 'showing', 'hiding'])
         self.el.classList.add('hide')
 
+
       self.el.classList.add('hiding')
+      if (modalDialog)
+        modalDialog.remove()
 
     toggle()=
       showing = self.el.classList.contains('show')
